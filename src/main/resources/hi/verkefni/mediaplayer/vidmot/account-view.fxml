@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<DialogPane prefHeight="175.0" prefWidth="340.0" stylesheets="@../../../../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <ButtonType buttonData="OK_DONE" text="OK" />
+    <ButtonType buttonData="CANCEL_CLOSE" text="Cancel" />
+    <content>
+        <VBox prefHeight="114.0" prefWidth="340.0">
+            <children>
+                <HBox prefHeight="30.0" prefWidth="320.0">
+                    <children>
+                        <Label prefHeight="26.0" prefWidth="160.0" text="Name" />
+                        <TextField fx:id="userName" prefHeight="25.0" prefWidth="179.0" />
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="10.0" />
+                    </VBox.margin>
+                </HBox>
+            </children>
+        </VBox>
+    </content>
+</DialogPane>

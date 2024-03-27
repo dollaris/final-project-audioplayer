@@ -1,0 +1,162 @@
+.root {
+    -fx-background-color: #222831;
+}
+
+#dropHere {
+    -fx-background: url("../img/drophere.jpg");
+    -fx-border-color: #69DDFF;
+    -fx-border-style: dashed;
+    -fx-border-width: 2px;
+}
+
+.label {
+    -fx-text-fill: #F3F8FF;
+    -fx-font-size: 13px;
+    -fx-font-family: "Arial Rounded MT Bold";
+}
+
+.progress-bar {
+    -fx-accent: #f63636;
+}
+
+.slider .track {
+    -fx-background-color: #f1f1f1;
+}
+
+.slider .thumb {
+    -fx-background-color: #69DDFF;
+}
+
+#volumeSlider {
+    -fx-control-inner-background: #f63636;
+    -fx-padding: 5px;
+}
+
+#volumeSlider .thumb {
+    -fx-background-color: #69DDFF;
+    -fx-padding: 5px;
+}
+
+#volumeSlider .track {
+    -fx-background-color: #555555;
+}
+
+#volumeSlider .thumb:hover {
+    -fx-background-color: #f63636;
+}
+
+.list-view {
+    -fx-background-color: transparent;
+}
+
+.list-view .cell {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Arial";
+}
+
+.list-view#metadataListView,
+.list-view#playlistListView {
+    -fx-border-color: #69DDFF;
+    -fx-border-style: dashed;
+    -fx-border-width: 2px;
+}
+
+.list-view#metadataListView .cell:odd {
+    -fx-background-color: #69DDFF;
+}
+
+.list-view#metadataListView .cell:even {
+    -fx-background-color: #69FFFF;
+}
+
+.list-view#playlistListView .cell:odd {
+    -fx-background-color: #69DDFF;
+}
+
+.list-view#playlistListView .cell:even {
+    -fx-background-color: #69FFFF;
+}
+
+.label#appName {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.label#playlist,
+.label#metadata {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.white-round-carts {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 1%;
+}
+.button {
+    -fx-background-color: #69DDFF;
+    -fx-text-fill: #f1f1f1;
+    -fx-background-radius: 20;
+    -fx-padding: 10 14;
+}
+
+#next .button .graphic,
+#previous .button .graphic,
+#stop .button .graphic,
+#playpause .button .graphic {
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;
+    -fx-background-position: center;
+}
+
+#next .button .graphic {
+    -fx-image: url("../img/next.png");
+}
+
+#previous .button .graphic {
+    -fx-image: url("../img/previous.png");
+}
+
+#stop .button .graphic {
+    -fx-image: url("../img/stop.png");
+}
+
+#playpause .button .graphic {
+    -fx-image: url("../img/playpause.png");
+}
+
+.mainPane {
+    -fx-background-color: #222831;
+}
+.sideBar {
+    -fx-background-color: #31363F;
+}
+
+.sidebtn {
+    -fx-background-color: transparent;
+}
+
+.sidebtn:hover {
+    -fx-background-color: #222831;
+}
+
+.profile-pict {
+    -fx-border-radius: 75%;
+    -fx-background-radius: 75%;
+}
+
+.label-mainPane{
+    -fx-text-fill: #F3F8FF;
+    -fx-font-size:30px;
+    -fx-font-family: "Arial Rounded MT Bold";
+}
+
+.btn-signin {
+    -fx-background-color: #222831;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 13px;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-border-radius: 50%;
+}
+
