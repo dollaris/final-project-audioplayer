@@ -4,7 +4,7 @@ module hi.verkefni.mediaplayer {
     requires javafx.media;
     requires java.desktop;
 
-
+    opens hi.verkefni.mediaplayer.vinnsla to javafx.fxml;
     opens hi.verkefni.mediaplayer.vidmot to javafx.fxml, javafx.media;
     exports hi.verkefni.mediaplayer.vidmot;
     exports hi.verkefni.mediaplayer.vinnsla;

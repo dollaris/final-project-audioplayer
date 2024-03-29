@@ -1,6 +1,11 @@
 .root {
     -fx-background-color: #222831;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-text-fill: #FFFFFF;
+
 }
+
+
 
 #dropHere {
     -fx-background: url("../img/drophere.jpg");
@@ -12,7 +17,7 @@
 .label {
     -fx-text-fill: #F3F8FF;
     -fx-font-size: 13px;
-    -fx-font-family: "Arial Rounded MT Bold";
+
 }
 
 .progress-bar {
@@ -94,12 +99,12 @@
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 1%;
 }
-.button {
-    -fx-background-color: #69DDFF;
-    -fx-text-fill: #f1f1f1;
-    -fx-background-radius: 20;
-    -fx-padding: 10 14;
-}
+/*.button {*/
+/*    -fx-background-color: #69DDFF;*/
+/*    -fx-text-fill: #f1f1f1;*/
+/*    -fx-background-radius: 20;*/
+/*    -fx-padding: 10 14;*/
+/*}*/
 
 #next .button .graphic,
 #previous .button .graphic,
@@ -132,13 +137,14 @@
 .sideBar {
     -fx-background-color: #31363F;
 }
-
-.sidebtn {
-    -fx-background-color: transparent;
+.scrollPane {
+    -fx-background: #31363F;
+    -fx-border-color: #31363F
 }
 
-.sidebtn:hover {
-    -fx-background-color: #222831;
+.sidebtn {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 13px;
 }
 
 .profile-pict {
@@ -149,14 +155,12 @@
 .label-mainPane{
     -fx-text-fill: #F3F8FF;
     -fx-font-size:30px;
-    -fx-font-family: "Arial Rounded MT Bold";
 }
 
 .btn-signin {
     -fx-background-color: #222831;
-    -fx-text-fill: #FFFFFF;
     -fx-font-size: 13px;
-    -fx-font-family: "Arial Rounded MT Bold";
     -fx-border-radius: 50%;
+    -fx-text-fill: #FFFFFF;
 }
 

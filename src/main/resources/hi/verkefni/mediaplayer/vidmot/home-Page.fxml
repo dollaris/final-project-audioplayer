@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,172 +12,16 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" stylesheets="@../../../../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.mediaplayer.vidmot.MediaController">
-    <left>
-        <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="200.0" styleClass="sideBar" stylesheets="@../../../../css/styles.css" BorderPane.alignment="CENTER">
-            <children>
-                <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="137.0" prefHeight="40.0" prefWidth="170.0" styleClass="sidebtn">
-                    <children>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
-                            <image>
-                                <Image url="@icon/compass-regular.png" />
-                            </image>
-                        </ImageView>
-                        <Label text="Explore">
-                            <HBox.margin>
-                                <Insets left="10.0" />
-                            </HBox.margin>
-                        </Label>
-                    </children>
-                    <padding>
-                        <Insets left="1.0" />
-                    </padding>
-                </HBox>
-                <Label layoutX="14.0" layoutY="121.0" text="Library" />
-                <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="177.0" prefHeight="40.0" prefWidth="170.0" styleClass="sidebtn">
-                    <children>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
-                            <image>
-                                <Image url="@icon/user-solid.png" />
-                            </image>
-                        </ImageView>
-                        <Label text="Artist">
-                            <HBox.margin>
-                                <Insets left="10.0" />
-                            </HBox.margin>
-                        </Label>
-                    </children>
-                    <padding>
-                        <Insets left="1.0" />
-                    </padding>
-                </HBox>
-                <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="217.0" prefHeight="40.0" prefWidth="170.0" styleClass="sidebtn">
-                    <children>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
-                            <image>
-                                <Image url="@icon/music-album.png" />
-                            </image>
-                        </ImageView>
-                        <Label text="Albums">
-                            <HBox.margin>
-                                <Insets left="10.0" />
-                            </HBox.margin>
-                        </Label>
-                    </children>
-                    <padding>
-                        <Insets left="1.0" />
-                    </padding>
-                </HBox>
-                <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="257.0" prefHeight="40.0" prefWidth="170.0" styleClass="sidebtn">
-                    <children>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
-                            <image>
-                                <Image url="@icon/music.png" />
-                            </image>
-                        </ImageView>
-                        <Label text="Songs">
-                            <HBox.margin>
-                                <Insets left="10.0" />
-                            </HBox.margin>
-                        </Label>
-                    </children>
-                    <padding>
-                        <Insets left="1.0" />
-                    </padding>
-                </HBox>
-                <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="297.0" prefHeight="40.0" prefWidth="170.0" styleClass="sidebtn">
-                    <children>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
-                            <image>
-                                <Image url="@icon/watching-a-movie.png" />
-                            </image>
-                        </ImageView>
-                        <Label text="Listen &amp; Watch">
-                            <HBox.margin>
-                                <Insets left="10.0" />
-                            </HBox.margin>
-                        </Label>
-                    </children>
-                    <padding>
-                        <Insets left="1.0" />
-                    </padding>
-                </HBox>
-                <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="337.0" prefHeight="40.0" prefWidth="170.0" styleClass="sidebtn">
-                    <children>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
-                            <image>
-                                <Image url="@icon/settings.png" />
-                            </image>
-                        </ImageView>
-                        <Label text="Settings">
-                            <HBox.margin>
-                                <Insets left="10.0" />
-                            </HBox.margin>
-                        </Label>
-                    </children>
-                    <padding>
-                        <Insets left="1.0" />
-                    </padding>
-                </HBox>
-                <Label layoutX="14.0" layoutY="390.0" text="Personal" />
-                <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="406.0" prefHeight="40.0" prefWidth="170.0" styleClass="sidebtn">
-                    <children>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
-                            <image>
-                                <Image url="@icon/playlist.png" />
-                            </image>
-                        </ImageView>
-                        <Label text="Playlists">
-                            <HBox.margin>
-                                <Insets left="10.0" />
-                            </HBox.margin>
-                        </Label>
-                    </children>
-                    <padding>
-                        <Insets left="1.0" />
-                    </padding>
-                </HBox>
-                <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="446.0" prefHeight="40.0" prefWidth="170.0" styleClass="sidebtn">
-                    <children>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
-                            <image>
-                                <Image url="@icon/bubble-chat.png" />
-                            </image>
-                        </ImageView>
-                        <Label text="Chat">
-                            <HBox.margin>
-                                <Insets left="10.0" />
-                            </HBox.margin>
-                        </Label>
-                    </children>
-                    <padding>
-                        <Insets left="1.0" />
-                    </padding>
-                </HBox>
-                <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="40.0" prefWidth="175.0" spacing="10.0">
-                    <children>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true">
-                            <image>
-                                <Image url="@img/433731813_962416268588493_65252639335190822_n.jpg" />
-                            </image>
-                        </ImageView>
-                      <Button fx:id="fxSignIn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onLogin" styleClass="btn-signin" text="Sign in" textFill="WHITE" HBox.hgrow="ALWAYS" />
-                    </children>
-                </HBox>
-            </children>
-        </Pane>
-    </left>
+<BorderPane fx:id="fxMainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" stylesheets="@../../../../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.mediaplayer.vidmot.MediaController">
     <center>
-        <AnchorPane styleClass="mainPane" BorderPane.alignment="CENTER">
+        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="mainPane" BorderPane.alignment="CENTER">
             <children>
                 <Label layoutX="14.0" layoutY="14.0" styleClass="label-mainPane" text="Explore" />
-                <GridPane alignment="CENTER" hgap="15.0" layoutX="1.0" layoutY="69.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="450.0" prefWidth="550.0" vgap="15.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="69.0">
+                <GridPane fx:id="fxGridPaneGenre" alignment="CENTER" hgap="15.0" layoutX="1.0" layoutY="69.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="15.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-105.0" AnchorPane.topAnchor="70.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
@@ -185,10 +31,10 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
                     </rowConstraints>
                     <children>
-                        <VBox spacing="15.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <VBox spacing="15.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                             <children>
                                 <Label text="Religious" VBox.vgrow="ALWAYS" />
-                                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="white-round-carts" VBox.vgrow="ALWAYS">
+                                <Button id="religious" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="white-round-carts" VBox.vgrow="ALWAYS">
                                     <effect>
                                         <DropShadow>
                                             <color>
@@ -199,7 +45,7 @@
                                 </Button>
                             </children>
                         </VBox>
-                        <VBox spacing="15.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <VBox spacing="15.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                             <children>
                                 <Label text="Icelandic" VBox.vgrow="ALWAYS" />
                                 <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="white-round-carts" VBox.vgrow="ALWAYS">
@@ -213,7 +59,7 @@
                                 </Button>
                             </children>
                         </VBox>
-                        <VBox spacing="15.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <VBox spacing="15.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                             <children>
                                 <Label text="Pop" VBox.vgrow="ALWAYS" />
                                 <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="white-round-carts" VBox.vgrow="ALWAYS">
@@ -249,4 +95,126 @@
             </children>
         </AnchorPane>
     </center>
+   <left>
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="sideBar" BorderPane.alignment="CENTER">
+         <children>
+            <VBox layoutX="8.0" layoutY="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+               <children>
+                  <Label text="Library">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <JFXButton  buttonType="RAISED" styleClass="sidebtn" text="Explore">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/compass-regular.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" maxHeight="1.7976931348623157E308" styleClass="sidebtn" text="Artists">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="sidebtn">
+                           <image>
+                              <Image url="@icon/user-solid.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" styleClass="sidebtn" text="Albums">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/music-album.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" styleClass="sidebtn" text="Songs">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/music.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" onAction="#onChooseTab" styleClass="sidebtn" text="Listen and Watch">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/watching-a-movie.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" styleClass="sidebtn" text="Settings">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/settings.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <Label text="Personal">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXButton buttonType="RAISED" styleClass="sidebtn" text="Playlists">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/playlist.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" styleClass="sidebtn" text="Chat">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/bubble-chat.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </left>
+   <top>
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton fx:id="fxSignIn" layoutX="4.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onLogin" styleClass="btn-signin" text="Sign in" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" smooth="false">
+                     <image>
+                        <Image url="@img/433731813_962416268588493_65252639335190822_n.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="fxMore" contentDisplay="RIGHT" layoutX="667.0" layoutY="8.0" styleClass="sidebtn" text="Lyrics/More" AnchorPane.rightAnchor="0.0">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icon/interface.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </AnchorPane>
+   </top>
+   <right>
+      <ScrollPane fx:id="fxMorePane" disable="true" hbarPolicy="NEVER" opacity="0.8" styleClass="scrollPane" BorderPane.alignment="CENTER" />
+   </right>
 </BorderPane>

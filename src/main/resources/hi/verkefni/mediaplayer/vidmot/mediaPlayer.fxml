@@ -70,7 +70,7 @@
             </children>
         </AnchorPane>
 
-        <!-- Controlles -->
+        <!-- Controllers -->
         <AnchorPane minHeight="87.0" minWidth="525.0" prefHeight="150.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="375.0">
             <children>
                 <TilePane alignment="CENTER" hgap="10.0" minHeight="87.0" minWidth="524.0" prefHeight="115.0" prefWidth="524.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0">
