@@ -1,8 +1,8 @@
 package hi.verkefni.mediaplayer.vidmot;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -10,10 +10,9 @@ import java.io.IOException;
 public class MediaApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        var scene = new Scene(new Pane());
-
-        ViewSwitcher.setScene(scene);
-        ViewSwitcher.switchTo(View.MAIN, true);
+        FXMLLoader fxmlLoader = new FXMLLoader(MediaApplication.class.getResource("home-page.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        stage.setTitle("Media Player");
         stage.setScene(scene);
         stage.show();
     }

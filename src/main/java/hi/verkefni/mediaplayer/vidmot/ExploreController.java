@@ -1,53 +1,28 @@
 package hi.verkefni.mediaplayer.vidmot;
 
-import hi.verkefni.mediaplayer.vinnsla.Account;
-import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-import java.util.Optional;
 
-public class MediaController implements Initializable {
+
+
+public class ExploreController implements Initializable {
     @FXML
-    private Button fxSignIn;
-    @FXML
-    private Button fxMore;
-    @FXML
-    private ScrollPane fxMorePane;
-    @FXML
-    private VBox fxLeftTabs;
-    @FXML
-    private BorderPane fxMainPane;
+    private AnchorPane fxMainPane;
     @FXML
     private GridPane fxGridPaneGenre;
-    @FXML
-    private Button fxExplore;
 
     @Override
     public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
-        fxMorePane.setTranslateX(150);
-        fxMorePane.setPrefWidth(150);
-        fxMore.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(javafx.util.Duration.seconds(0.6));
-            slide.setNode(fxMorePane);
-
-            if (fxMorePane.getTranslateX() == 150) {
-                slide.setToX(0);
-            } else {
-                slide.setToX(150);
-
-            }
-            slide.play();
-        });
-
         for (int i = 0; i < fxGridPaneGenre.getChildren().size(); i++) {
             if (fxGridPaneGenre.getChildren().get(i) instanceof VBox) {
                 VBox vbox = (VBox) fxGridPaneGenre.getChildren().get(i);
@@ -62,28 +37,22 @@ public class MediaController implements Initializable {
     }
 
     @FXML
-    public void onLogin(ActionEvent e) {
-        Dialog<Account> dialog = new AccountDialog(new Account(""));
-        Optional<Account> result = dialog.showAndWait();
-
-        result.ifPresent(account -> {
-            fxSignIn.setText(account.getName());
-        });
-    }
-
-    @FXML
-    public void onChooseTab(ActionEvent e) throws IOException {
-        ViewSwitcher.switchTo(View.PLAYLIST, false);
-    }
-
-    @FXML
     public void handleButtonClick(ActionEvent e) {
         try {
             Button button = (Button) e.getSource();
             String buttonId = button.getId();
 
             switch (buttonId) {
-                case "religious":
+                case "Religious":
+                    loadView("genre-view.fxml");
+                    break;
+                case "pop":
+                    loadView("genre-view.fxml");
+                    break;
+                case "Icelandic":
+                    loadView("genre-view.fxml");
+                    break;
+                case "Rock":
                     loadView("genre-view.fxml");
                     break;
                 default:
@@ -98,7 +67,17 @@ public class MediaController implements Initializable {
     private void loadView(String view) throws IOException {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(view));
-            fxMainPane.setCenter(fxmlLoader.load());
+            AnchorPane genreView = fxmlLoader.load();
+
+            Parent parent = fxMainPane.getParent();
+
+            if (parent instanceof BorderPane) {
+                BorderPane borderPane = (BorderPane) parent;
+                borderPane.setCenter(genreView);
+            } else {
+                System.out.println("Parent is not a BorderPane");
+            }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

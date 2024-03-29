@@ -10,102 +10,22 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
 
-<BorderPane fx:id="fxMainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" stylesheets="@../../../../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.mediaplayer.vidmot.MediaController">
+<BorderPane fx:id="fxMainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" stylesheets="@../../../../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.mediaplayer.vidmot.navbarController">
     <center>
-        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="mainPane" BorderPane.alignment="CENTER">
-            <children>
-                <Label layoutX="14.0" layoutY="14.0" styleClass="label-mainPane" text="Explore" />
-                <GridPane fx:id="fxGridPaneGenre" alignment="CENTER" hgap="15.0" layoutX="1.0" layoutY="69.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="15.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-105.0" AnchorPane.topAnchor="70.0">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-                    </rowConstraints>
-                    <children>
-                        <VBox spacing="15.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                            <children>
-                                <Label text="Religious" VBox.vgrow="ALWAYS" />
-                                <Button id="religious" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="white-round-carts" VBox.vgrow="ALWAYS">
-                                    <effect>
-                                        <DropShadow>
-                                            <color>
-                                                <Color red="1.0" green="1.0" blue="1.0" />
-                                            </color>
-                                        </DropShadow>
-                                    </effect>
-                                </Button>
-                            </children>
-                        </VBox>
-                        <VBox spacing="15.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                            <children>
-                                <Label text="Icelandic" VBox.vgrow="ALWAYS" />
-                                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="white-round-carts" VBox.vgrow="ALWAYS">
-                                    <effect>
-                                        <DropShadow>
-                                            <color>
-                                                <Color red="1.0" green="1.0" blue="1.0" />
-                                            </color>
-                                        </DropShadow>
-                                    </effect>
-                                </Button>
-                            </children>
-                        </VBox>
-                        <VBox spacing="15.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                            <children>
-                                <Label text="Pop" VBox.vgrow="ALWAYS" />
-                                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="white-round-carts" VBox.vgrow="ALWAYS">
-                                    <effect>
-                                        <DropShadow>
-                                            <color>
-                                                <Color red="1.0" green="1.0" blue="1.0" />
-                                            </color>
-                                        </DropShadow>
-                                    </effect>
-                                </Button>
-                            </children>
-                        </VBox>
-                        <VBox spacing="15.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                            <children>
-                                <Label text="Rock" />
-                                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="white-round-carts" VBox.vgrow="ALWAYS">
-                                    <effect>
-                                        <DropShadow>
-                                            <color>
-                                                <Color red="1.0" green="1.0" blue="1.0" />
-                                            </color>
-                                        </DropShadow>
-                                    </effect>
-                                </Button>
-                            </children>
-                        </VBox>
-                    </children>
-                    <padding>
-                        <Insets bottom="15.0" left="10.0" right="10.0" />
-                    </padding>
-                </GridPane>
-            </children>
-        </AnchorPane>
     </center>
    <left>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="sideBar" BorderPane.alignment="CENTER">
+      <AnchorPane>
          <children>
             <VBox layoutX="8.0" layoutY="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
                <children>
                   <Label text="Library">
                      <VBox.margin>
-                        <Insets />
+                        <Insets/>
                      </VBox.margin>
                   </Label>
-                  <JFXButton  buttonType="RAISED" styleClass="sidebtn" text="Explore">
+                  <JFXButton id="explore" buttonType="RAISED" styleClass="sidebtn" text="Explore" onAction="#onExplore">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -114,7 +34,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" maxHeight="1.7976931348623157E308" styleClass="sidebtn" text="Artists">
+                  <JFXButton id="artists" buttonType="RAISED" maxHeight="1.7976931348623157E308" styleClass="sidebtn" text="Artists" onAction="#onArtist">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="sidebtn">
                            <image>
@@ -123,7 +43,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" styleClass="sidebtn" text="Albums">
+                  <JFXButton id="albums" buttonType="RAISED" styleClass="sidebtn" text="Albums" onAction="#onAlbums">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -132,7 +52,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" styleClass="sidebtn" text="Songs">
+                  <JFXButton id="songs" buttonType="RAISED" styleClass="sidebtn" text="Songs" onAction="#onSongs">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -141,7 +61,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" onAction="#onChooseTab" styleClass="sidebtn" text="Listen and Watch">
+                  <JFXButton id="listen_and_watch" buttonType="RAISED" styleClass="sidebtn" text="Listen and Watch" onAction="#onListenAndWatch">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -150,7 +70,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" styleClass="sidebtn" text="Settings">
+                  <JFXButton id="settings" buttonType="RAISED" styleClass="sidebtn" text="Settings" onAction="#onSettings">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -164,7 +84,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <JFXButton buttonType="RAISED" styleClass="sidebtn" text="Playlists">
+                  <JFXButton id="playlists" buttonType="RAISED" styleClass="sidebtn" text="Playlists" onAction="#onPlaylists">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -173,7 +93,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" styleClass="sidebtn" text="Chat">
+                  <JFXButton id="chat" buttonType="RAISED" styleClass="sidebtn" text="Chat" onAction="#onChat">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>

@@ -9,16 +9,16 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="456.0" prefWidth="585.0" styleClass="mainPane" stylesheets="@../../../../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.mediaplayer.vidmot.GenreController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="mainPane" stylesheets="@../../../../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.mediaplayer.vidmot.GenreController">
    <children>
-      <HBox layoutX="93.0" layoutY="128.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="15.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="50.0">
+      <HBox layoutX="93.0" layoutY="128.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="466.0" spacing="15.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="50.0">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icon/music-album.png" />
                </image>
             </ImageView>
-            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="50.0" HBox.hgrow="ALWAYS">
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="285.0" spacing="50.0" HBox.hgrow="ALWAYS">
                <children>
                   <Label styleClass="label-mainPane" text="Test" />
                   <HBox alignment="BOTTOM_LEFT" prefHeight="41.0" prefWidth="245.0">
@@ -48,7 +48,7 @@
          </children>
       </HBox>
       <ListView layoutX="193.0" layoutY="231.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="sideBar" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="185.0" />
-      <JFXButton layoutX="14.0" layoutY="25.0" onAction="#onExplore" styleClass="sidebtn" text="BACK">
+      <JFXButton layoutX="14.0" layoutY="25.0" styleClass="sidebtn" text="BACK">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
