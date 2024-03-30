@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.media.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.mediaplayer.vinnsla.DragAndDrop">
+    <stylesheets>
+        <URL value="@../css/styles.css" />
+    </stylesheets>
+    <AnchorPane prefHeight="80.0" prefWidth="550.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="350.0" AnchorPane.topAnchor="0.0">
+        <children>
+            <Label fx:id="appName" alignment="CENTER" prefHeight="80.0" prefWidth="550.0" text="MediaPlayer" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        </children>
+    </AnchorPane>
+
+
+    <AnchorPane fx:id="dropHere" layoutX="10.4" layoutY="82.0" prefHeight="360.0" prefWidth="525.0" style="-fx-background-image: url(img/drophere.jpg);" AnchorPane.bottomAnchor="158.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="365.0" AnchorPane.topAnchor="82.0">
+        <children>
+
+            <StackPane fx:id="paneDragAndDrop" onDragDropped="#paneDragDropped" onDragOver="#paneDragOver" prefHeight="360.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <children>
+                    <!-- MediaView for displaying videos -->
+                    <MediaView fx:id="mediaView" fitHeight="${paneDragAndDrop.height}" fitWidth="${paneDragAndDrop.width}" StackPane.alignment="CENTER" />
+                    <!-- ImageView for displaying images -->
+                    <ImageView fx:id="imageView" fitHeight="${paneDragAndDrop.height}" fitWidth="${paneDragAndDrop.width}" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
+                        <image>
+                            <Image url="@../img/drophere.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </StackPane>
+
+        </children>
+    </AnchorPane>
+
+
+    <AnchorPane layoutX="400.0" prefHeight="80.0" prefWidth="200.0" AnchorPane.rightAnchor="0.0">
+        <children>
+            <Label fx:id="metadata" alignment="CENTER" prefHeight="80.0" prefWidth="350.0" text="Info (Metadata)" textAlignment="CENTER" AnchorPane.rightAnchor="0.0" />
+        </children>
+    </AnchorPane>
+
+
+    <AnchorPane layoutX="400.0" layoutY="82.0" prefHeight="150.0" prefWidth="201.0" AnchorPane.rightAnchor="0.0">
+        <children>
+            <ListView fx:id="metadataListView" prefHeight="150.0" prefWidth="350.0" AnchorPane.rightAnchor="6.0">
+                <padding>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                </padding>
+            </ListView>
+        </children>
+    </AnchorPane>
+    <VBox layoutY="280.0" prefHeight="133.0" prefWidth="599.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="201.0" />
+
+    <AnchorPane layoutX="400.0" layoutY="232.0" prefHeight="360.0" prefWidth="350.0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="232.0">
+        <children>
+            <ListView fx:id="playlistListView" layoutY="49.0" onMouseClicked="#onTrackList" prefHeight="288.0" prefWidth="350.0" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
+                <padding>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                </padding>
+            </ListView>
+            <Label fx:id="playlist" alignment="CENTER" layoutX="8.0" layoutY="1.0" prefHeight="51.0" prefWidth="350.0" text="Label" AnchorPane.rightAnchor="-1.0" />
+        </children>
+    </AnchorPane>
+
+    <!-- Controlles -->
+    <AnchorPane prefHeight="150.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="375.0">
+        <children>
+            <TilePane alignment="CENTER" hgap="10.0" prefHeight="115.0" prefWidth="524.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0">
+                <children>
+                    <Slider fx:id="volumeSlider" orientation="VERTICAL" prefHeight="64.0" prefWidth="14.0" />
+                    <Button fx:id="previous" mnemonicParsing="false" onAction="#onPreviousTrack" prefHeight="30.0" prefWidth="60.0">
+                        <graphic>
+                            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../img/previous.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="playpause" mnemonicParsing="false" onAction="#onPlayPause" prefHeight="30.0" prefWidth="60.0">
+                        <graphic>
+                            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../img/playpause.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="stop" mnemonicParsing="false" onAction="#onStop" prefHeight="30.0" prefWidth="60.0">
+                        <graphic>
+                            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../img/stop.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="next" mnemonicParsing="false" onAction="#onNextTrack" prefHeight="30.0" prefWidth="60.0">
+                        <graphic>
+                            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../img/next.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </children>
+            </TilePane>
+            <ProgressBar fx:id="progressBar" layoutX="15.0" layoutY="14.0" prefHeight="24.0" prefWidth="494.0" progress="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="16.0" />
+        </children>
+    </AnchorPane>
+
+</AnchorPane>

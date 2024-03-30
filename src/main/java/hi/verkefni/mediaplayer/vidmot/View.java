@@ -5,7 +5,7 @@
 //    ARTIST("artist.fxml"),
 //    ALBUM("album.fxml"),
 //    SONG("song.fxml"),
-//    LISTEN_AND_WATCH("mediaplayer.fxml"),
+//    LISTEN_AND_WATCH("listenandwatch.fxml"),
 //    SETTINGS("settings.fxml"),
 //    PLAYLISTS("playlists.fxml"),
 //    CHATS("chats.fxml");

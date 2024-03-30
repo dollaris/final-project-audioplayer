@@ -1,19 +1,19 @@
 package hi.verkefni.mediaplayer.vidmot;
 
-import hi.verkefni.mediaplayer.vinnsla.Account;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
-import java.util.Optional;
 
-public class navbarController {
+public class NavbarController {
     @FXML
     private BorderPane fxMainPane;
     @FXML
@@ -22,6 +22,10 @@ public class navbarController {
     private Button fxMore;
     @FXML
     private Button fxSignIn;
+    @FXML
+    public Label userName;
+    @FXML
+    public ImageView userImage;
 
 
     @FXML
@@ -46,12 +50,42 @@ public class navbarController {
     }
     @FXML
     public void onLogin(ActionEvent e) {
-        Dialog<Account> dialog = new AccountDialog(new Account(""));
-        Optional<Account> result = dialog.showAndWait();
+        loadContent("SignIn.fxml");
+    }
 
-        result.ifPresent(account -> {
-            fxSignIn.setText(account.getName());
-        });
+    void loadContent(String fxmlFileName) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName));
+            loader.setControllerFactory(c -> {
+                if (c == SignIn.class) {
+                    SignIn controller = new SignIn();
+                    controller.setNavbarController(this);
+                    return controller;
+                } else {
+                    try {
+                        return c.getDeclaredConstructor().newInstance();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return null;
+                    }
+                }
+            });
+            fxMainPane.setCenter(loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    void loadContent() {
+        loadContent("explore.fxml");
+    }
+
+    public void updateUserInfo(String name) {
+        userName.setText(name);
+
+        // Generate user image URL and set it
+        String idUserImage = "https://robohash.org/" + name;
+        userImage.setImage(new Image(idUserImage));
     }
 
     @FXML
@@ -76,7 +110,7 @@ public class navbarController {
 
     @FXML
     public void onListenAndWatch(ActionEvent actionEvent) {
-        loadContent("mediaplayer.fxml");
+        loadContent("listenandwatch.fxml");
     }
 
     @FXML
@@ -94,12 +128,4 @@ public class navbarController {
         loadContent("chat.fxml");
     }
 
-    private void loadContent(String fxmlFileName) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName));
-            fxMainPane.setCenter(loader.load());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
