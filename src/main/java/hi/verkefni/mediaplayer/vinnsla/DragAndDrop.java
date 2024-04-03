@@ -22,21 +22,21 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class DragAndDrop {
+public class DragAndDrop implements Controll {
 
     @FXML
     private MediaView mediaView;
 
     @FXML
-    private ImageView imageView;
-
-    @FXML
     private ListView<String> playlistListView;
-
-    private final Queue<File> fileQueue = new LinkedList<>();
 
     @FXML
     private ListView<String> metadataListView;
+
+    @FXML
+    private ImageView imageView;
+
+    private final Queue<File> fileQueue = new LinkedList<>();
 
     @FXML
     private Slider volumeSlider;
@@ -46,19 +46,11 @@ public class DragAndDrop {
 
     private MediaPlayer mediaPlayer;
 
-    /**
-     * Initializes the controller after FXML file has been loaded.
-     * This method is automatically called by the FXMLLoader.
-     */
     @FXML
     void initialize() {
         setProgressBarHandlers();
     }
 
-    /**
-     * Sets the event handlers for the progress bar. It handles mouse click events on the progress bar by seeking the media to the corresponding position. It also updates the progress bar based on the current media playback time.
-     *
-     */
     private void setProgressBarHandlers() {
         progressBar.setOnMouseClicked(event -> {
             if (mediaPlayer != null && mediaPlayer.getStatus() != MediaPlayer.Status.UNKNOWN) {
@@ -79,11 +71,7 @@ public class DragAndDrop {
         }
     }
 
-    /**
-     * Handles the drag and drop event on the pane.
-     *
-     * @param  event  the DragEvent object representing the drag and drop event
-     */
+
     @FXML
     void paneDragDropped(DragEvent event) {
         Dragboard dragboard = event.getDragboard();
@@ -91,75 +79,74 @@ public class DragAndDrop {
         if (dragboard.hasFiles()) {
             List<File> files = dragboard.getFiles();
             for (File file : files) {
-                System.out.println("Dropped file: " + file.getName());
                 playlistListView.getItems().add(file.getName());
-                System.out.println("Added file to playlist: " + file.getName());
                 if (!fileQueue.contains(file)) {
                     fileQueue.add(file);
-                    System.out.println("Added file to queue: " + file.getName());
                 }
             }
             success = true;
             event.setDropCompleted(success);
             event.consume();
 
-            if ((mediaPlayer == null || mediaPlayer.getStatus() == MediaPlayer.Status.STOPPED)
-                    && !fileQueue.isEmpty()) {
+            if (
+                    (
+                            mediaPlayer == null ||
+                                    mediaPlayer.getStatus() == MediaPlayer.Status.STOPPED
+                    ) &&
+                            !fileQueue.isEmpty()
+            ) {
                 playNextInQueue();
             }
         }
     }
 
-    /**
-     * Plays the next file in the queue if there are files in the queue.
-     * If the next file is not already in the playlist, it is added to the playlist.
-     * The file is then displayed and the metadata list is cleared.
-     */
     private void playNextInQueue() {
         if (!fileQueue.isEmpty()) {
             File nextFile = fileQueue.poll();
-            System.out.println("Next file in queue: " + nextFile.getName());
             if (!playlistListView.getItems().contains(nextFile.getName())) {
-                System.out.println("Adding file to playlist: " + nextFile.getName());
                 playlistListView.getItems().add(nextFile.getName());
             }
             displayFile(nextFile);
-            metadataListView.getItems().clear();
         }
     }
 
-    /**
-     * Display the file based on its type and add it to the playlist if not already present.
-     *
-     * @param  file	The file to be displayed
-     */
     private void displayFile(File file) {
         String fileName = file.getName().toLowerCase();
-        if (fileName.endsWith(".mp3") || fileName.endsWith(".wav") || fileName.endsWith(".aiff") ||
-                fileName.endsWith(".aac") || fileName.endsWith(".flac") || fileName.endsWith(".ogg")) {
+        if (
+                fileName.endsWith(".mp3") ||
+                        fileName.endsWith(".wav") ||
+                        fileName.endsWith(".aiff") ||
+                        fileName.endsWith(".aac") ||
+                        fileName.endsWith(".flac") ||
+                        fileName.endsWith(".ogg")
+        ) {
             playAudio(file);
             if (!playlistListView.getItems().contains(file.getName())) {
-                System.out.println("Adding file to playlist: " + file.getName());
                 playlistListView.getItems().add(file.getName());
             }
-        } else if (fileName.endsWith(".jpg") || fileName.endsWith(".jpeg") || fileName.endsWith(".png") ||
-                fileName.endsWith(".gif") || fileName.endsWith(".bmp")) {
+        } else if (
+                fileName.endsWith(".jpg") ||
+                        fileName.endsWith(".jpeg") ||
+                        fileName.endsWith(".png") ||
+                        fileName.endsWith(".gif") ||
+                        fileName.endsWith(".bmp")
+        ) {
             displayImage(file);
-        } else if (fileName.endsWith(".avi") || fileName.endsWith(".mp4") || fileName.endsWith(".flv") ||
-                fileName.endsWith(".mov") || fileName.endsWith(".wmv") || fileName.endsWith(".webm")) {
+        } else if (
+                fileName.endsWith(".avi") ||
+                        fileName.endsWith(".mp4") ||
+                        fileName.endsWith(".flv") ||
+                        fileName.endsWith(".mov") ||
+                        fileName.endsWith(".wmv") ||
+                        fileName.endsWith(".webm")
+        ) {
             playVideo(file);
             if (!playlistListView.getItems().contains(file.getName())) {
-                System.out.println("Adding file to playlist: " + file.getName());
                 playlistListView.getItems().add(file.getName());
             }
         }
     }
 
-    /**
-     * A method to play audio from a given file and handle various media player events.
-     *
-     * @param  file   the file to be played
-     */
     private void playAudio(File file) {
         Media media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
@@ -211,11 +198,6 @@ public class DragAndDrop {
         System.out.println("Playing audio: " + file);
     }
 
-    /**
-     * Plays a video file.
-     *
-     * @param  file  the video file to be played
-     */
     private void playVideo(File file) {
         Media media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
@@ -284,12 +266,18 @@ public class DragAndDrop {
 
         metadataListView.getItems().add("Height: " + image.getHeight());
         metadataListView.getItems().add("Width: " + image.getWidth());
-        metadataListView.getItems().add("Pixel Reader Available: " + (image.getPixelReader() != null));
-        System.out.println("Added image properties to the ListView" + metadataListView.getItems());
+        metadataListView
+                .getItems()
+                .add("Pixel Reader Available: " + (image.getPixelReader() != null));
+        System.out.println(
+                "Added image properties to the ListView" + metadataListView.getItems()
+        );
 
         System.out.println("Height: " + image.getHeight());
         System.out.println("Width: " + image.getWidth());
-        System.out.println("Pixel Reader Available: " + (image.getPixelReader() != null));
+        System.out.println(
+                "Pixel Reader Available: " + (image.getPixelReader() != null)
+        );
     }
 
     /**
@@ -304,7 +292,6 @@ public class DragAndDrop {
             event.acceptTransferModes(TransferMode.COPY);
         }
         event.consume();
-        System.out.println("DragOver");
     }
 
     /**
@@ -313,6 +300,7 @@ public class DragAndDrop {
      * @param  actionEvent    the action event triggering the function
      * @return         	    void
      */
+    @Override
     @FXML
     public void onPlayPause(ActionEvent actionEvent) {
         if (mediaPlayer != null) {
@@ -329,6 +317,7 @@ public class DragAndDrop {
      *
      * @param  actionEvent  the event that triggered the method
      */
+    @Override
     @FXML
     public void onStop(ActionEvent actionEvent) {
         if (mediaPlayer != null) {
@@ -341,10 +330,13 @@ public class DragAndDrop {
      *
      * @param  mouseEvent  the mouse event that triggered the function
      */
+    @Override
     @FXML
     public void onTrackList(MouseEvent mouseEvent) {
         if (mouseEvent.getClickCount() == 2) {
-            String selectedItem = playlistListView.getSelectionModel().getSelectedItem();
+            String selectedItem = playlistListView
+                    .getSelectionModel()
+                    .getSelectedItem();
             if (selectedItem != null) {
                 File file = new File(selectedItem);
                 if (file.exists()) {
@@ -361,6 +353,7 @@ public class DragAndDrop {
      *
      * @param  actionEvent  the action event triggered by the button click
      */
+    @Override
     public void onPreviousTrack(ActionEvent actionEvent) {
         File file = fileQueue.peek();
         if (file != null) {
@@ -377,8 +370,9 @@ public class DragAndDrop {
      * @param  actionEvent    description of parameter
      * @return          description of return value
      */
+    @Override
     public void onNextTrack(ActionEvent actionEvent) {
-        if(!fileQueue.isEmpty()) {
+        if (!fileQueue.isEmpty()) {
             mediaPlayer.stop();
             playNextInQueue();
         } else {

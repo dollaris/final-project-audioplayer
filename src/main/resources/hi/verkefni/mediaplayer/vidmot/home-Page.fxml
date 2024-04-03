@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="fxMainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" stylesheets="@../../../../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.mediaplayer.vidmot.navbarController">
+<BorderPane fx:id="fxMainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" stylesheets="@../../../../css/styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.mediaplayer.vidmot.NavbarController">
     <center>
     </center>
    <left>
@@ -22,10 +16,10 @@
                <children>
                   <Label text="Library">
                      <VBox.margin>
-                        <Insets/>
+                        <Insets />
                      </VBox.margin>
                   </Label>
-                  <JFXButton id="explore" buttonType="RAISED" styleClass="sidebtn" text="Explore" onAction="#onExplore">
+                  <JFXButton id="explore" buttonType="RAISED" onAction="#onExplore" styleClass="sidebtn" text="Explore">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -34,7 +28,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton id="artists" buttonType="RAISED" maxHeight="1.7976931348623157E308" styleClass="sidebtn" text="Artists" onAction="#onArtist">
+                  <JFXButton id="artists" buttonType="RAISED" maxHeight="1.7976931348623157E308" onAction="#onArtist" styleClass="sidebtn" text="Artists">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="sidebtn">
                            <image>
@@ -43,7 +37,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton id="albums" buttonType="RAISED" styleClass="sidebtn" text="Albums" onAction="#onAlbums">
+                  <JFXButton id="albums" buttonType="RAISED" onAction="#onAlbums" styleClass="sidebtn" text="Albums">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -52,7 +46,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton id="songs" buttonType="RAISED" styleClass="sidebtn" text="Songs" onAction="#onSongs">
+                  <JFXButton id="songs" buttonType="RAISED" onAction="#onSongs" styleClass="sidebtn" text="Songs">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -61,7 +55,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton id="listen_and_watch" buttonType="RAISED" styleClass="sidebtn" text="Listen and Watch" onAction="#onListenAndWatch">
+                  <JFXButton id="listen_and_watch" buttonType="RAISED" onAction="#onListenAndWatch" styleClass="sidebtn" text="Listen and Watch">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -70,7 +64,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton id="settings" buttonType="RAISED" styleClass="sidebtn" text="Settings" onAction="#onSettings">
+                  <JFXButton id="settings" buttonType="RAISED" onAction="#onSettings" styleClass="sidebtn" text="Settings">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -84,7 +78,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <JFXButton id="playlists" buttonType="RAISED" styleClass="sidebtn" text="Playlists" onAction="#onPlaylists">
+                  <JFXButton id="playlists" buttonType="RAISED" onAction="#onPlaylists" styleClass="sidebtn" text="Playlists">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -93,7 +87,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton id="chat" buttonType="RAISED" styleClass="sidebtn" text="Chat" onAction="#onChat">
+                  <JFXButton id="chat" buttonType="RAISED" onAction="#onChat" styleClass="sidebtn" text="Chat">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -110,15 +104,9 @@
    <top>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton fx:id="fxSignIn" layoutX="4.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onLogin" styleClass="btn-signin" text="Sign in" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" smooth="false">
-                     <image>
-                        <Image url="@img/433731813_962416268588493_65252639335190822_n.jpg" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
+            <ImageView fx:id="userImage" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" />
+            <Label fx:id="userName" layoutX="56.0" layoutY="12.0" prefHeight="16.0" prefWidth="112.0" styleClass="sidebtn" text="" textFill="aliceblue" />
+            <JFXButton fx:id="fxSignIn" layoutX="188.0" layoutY="8.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onLogin" styleClass="btn-signin" text="Sign in" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="8.0" />
             <JFXButton fx:id="fxMore" contentDisplay="RIGHT" layoutX="667.0" layoutY="8.0" styleClass="sidebtn" text="Lyrics/More" AnchorPane.rightAnchor="0.0">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
