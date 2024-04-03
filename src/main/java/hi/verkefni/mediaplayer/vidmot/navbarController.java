@@ -77,7 +77,7 @@ public class NavbarController {
     }
 
     void loadContent() {
-        loadContent("explore.fxml");
+        loadContent("signin.fxml");
     }
 
     public void updateUserInfo(String name) {

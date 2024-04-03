@@ -39,6 +39,7 @@ public class SignIn {
         }
 
         System.out.println("Logged in as: " + name);
+        navbarController.loadContent("explore.fxml");
     }
 
     public void onQuit(ActionEvent actionEvent) {
