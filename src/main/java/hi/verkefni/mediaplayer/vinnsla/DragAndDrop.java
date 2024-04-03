@@ -49,6 +49,7 @@ public class DragAndDrop implements Controll {
     @FXML
     void initialize() {
         setProgressBarHandlers();
+        volumeSlider.setValue(100);
     }
 
     private void setProgressBarHandlers() {

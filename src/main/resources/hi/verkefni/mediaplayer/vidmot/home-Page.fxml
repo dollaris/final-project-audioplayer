@@ -8,6 +8,7 @@
 
 <BorderPane fx:id="fxMainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" stylesheets="@../../../../css/styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.mediaplayer.vidmot.NavbarController">
     <center>
+      <!-- display content here -->
     </center>
    <left>
       <AnchorPane>
@@ -28,33 +29,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton id="artists" buttonType="RAISED" maxHeight="1.7976931348623157E308" onAction="#onArtist" styleClass="sidebtn" text="Artists">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="sidebtn">
-                           <image>
-                              <Image url="@icon/user-solid.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
-                  <JFXButton id="albums" buttonType="RAISED" onAction="#onAlbums" styleClass="sidebtn" text="Albums">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icon/music-album.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
-                  <JFXButton id="songs" buttonType="RAISED" onAction="#onSongs" styleClass="sidebtn" text="Songs">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icon/music.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
+
                   <JFXButton id="listen_and_watch" buttonType="RAISED" onAction="#onListenAndWatch" styleClass="sidebtn" text="Listen and Watch">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
@@ -64,6 +39,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
+
                   <JFXButton id="settings" buttonType="RAISED" onAction="#onSettings" styleClass="sidebtn" text="Settings">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
@@ -73,6 +49,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
+
                   <Label text="Personal">
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -87,26 +64,18 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton id="chat" buttonType="RAISED" onAction="#onChat" styleClass="sidebtn" text="Chat">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icon/bubble-chat.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
+
                </children>
             </VBox>
          </children>
       </AnchorPane>
    </left>
+
    <top>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="userImage" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" />
-            <Label fx:id="userName" layoutX="56.0" layoutY="12.0" prefHeight="16.0" prefWidth="112.0" styleClass="sidebtn" text="" textFill="aliceblue" />
-            <JFXButton fx:id="fxSignIn" layoutX="188.0" layoutY="8.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onLogin" styleClass="btn-signin" text="Sign in" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="8.0" />
+            <ImageView fx:id="userImage" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" />
+            <Label fx:id="userName" layoutX="76.0" layoutY="12.0" prefHeight="38.0" prefWidth="92.0" styleClass="sidebtn" textFill="aliceblue" />
             <JFXButton fx:id="fxMore" contentDisplay="RIGHT" layoutX="667.0" layoutY="8.0" styleClass="sidebtn" text="Lyrics/More" AnchorPane.rightAnchor="0.0">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
