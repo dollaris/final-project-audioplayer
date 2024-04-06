@@ -13,32 +13,18 @@
    <children>
       <HBox layoutX="93.0" layoutY="128.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="466.0" spacing="15.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="50.0">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@icon/music-album.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="fxImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="NEVER" />
             <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="285.0" spacing="50.0" HBox.hgrow="ALWAYS">
                <children>
                   <Label styleClass="label-mainPane" text="Test" />
                   <HBox alignment="BOTTOM_LEFT" prefHeight="41.0" prefWidth="245.0">
                      <children>
-                        <JFXButton styleClass="sidebtn" text="Play">
+                        <JFXButton onMouseClicked="#onPlayPause" styleClass="sidebtn" text="Play &amp; Pause">
                            <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="fxImagePlayPause" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#onPlayPause" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image fx:id="fxImage" url="@icon/play-button-arrowhead.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton styleClass="sidebtn" text="Shuffle">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icon/shuffle.png" />
-                                 </image>
-                              </ImageView>
+                                    <Image url="@img/playpause.png" />
+                                 </image></ImageView>
                            </graphic>
                         </JFXButton>
                      </children>
@@ -47,14 +33,6 @@
             </VBox>
          </children>
       </HBox>
-      <ListView layoutX="193.0" layoutY="231.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="sideBar" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="185.0" />
-      <JFXButton layoutX="14.0" layoutY="25.0" styleClass="sidebtn" text="BACK">
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@icon/play-button-arrowhead.png" />
-               </image>
-            </ImageView>
-         </graphic></JFXButton>
+      <ListView fx:id="fxListView" onMouseClicked="#onValidSong" layoutX="193.0" layoutY="231.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="sideBar" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="185.0" />
    </children>
 </AnchorPane>

@@ -26,8 +26,8 @@
             <children>
                 <VBox spacing="15.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                     <children>
-                        <Label text="Religious" VBox.vgrow="ALWAYS" />
-                        <Button id="Religious" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="white-round-carts" VBox.vgrow="ALWAYS">
+                        <Label text="Classical" VBox.vgrow="ALWAYS" />
+                        <Button id="classical" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="white-round-carts" VBox.vgrow="ALWAYS">
                             <effect>
                                 <DropShadow>
                                     <color>
@@ -40,8 +40,8 @@
                 </VBox>
                 <VBox spacing="15.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                     <children>
-                        <Label text="Icelandic" VBox.vgrow="ALWAYS" />
-                        <Button id="Icelandic" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="white-round-carts" VBox.vgrow="ALWAYS">
+                        <Label text="HipHop" VBox.vgrow="ALWAYS" />
+                        <Button id="hiphop" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="white-round-carts" VBox.vgrow="ALWAYS">
                             <effect>
                                 <DropShadow>
                                     <color>
@@ -55,7 +55,7 @@
                 <VBox spacing="15.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                     <children>
                         <Label text="Pop" VBox.vgrow="ALWAYS" />
-                        <Button id="Pop" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="white-round-carts" VBox.vgrow="ALWAYS">
+                        <Button id="pop" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="white-round-carts" VBox.vgrow="ALWAYS">
                             <effect>
                                 <DropShadow>
                                     <color>
@@ -69,7 +69,7 @@
                 <VBox spacing="15.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                     <children>
                         <Label text="Rock" />
-                        <Button id="Rock" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="white-round-carts" VBox.vgrow="ALWAYS">
+                        <Button id="rock" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="white-round-carts" VBox.vgrow="ALWAYS">
                             <effect>
                                 <DropShadow>
                                     <color>

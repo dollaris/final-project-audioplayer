@@ -2,77 +2,62 @@ package hi.verkefni.mediaplayer.vinnsla;
 
 public class Song {
 
-    private String title;
-    private String artist;
-    private String album;
-    private String Genre;
-    private String imgName;
-    private double songLength;
-    private String path;
+    private String artistName;
+    private String songName;
+    private double duration;
+    private String pathSong;
+    private String pathImage;
 
-    public Song(String title, String artist, String album, String Genre, String imgName, double songLength, String path) {
-        this.title = title;
-        this.artist = artist;
-        this.album = album;
-        this.Genre = Genre;
-        this.songLength = songLength;
-        this.imgName = imgName;
-        this.path = path;
+    public Song(String artistName, String songName, double duration, String pathSong, String pathImage) {
+        this.artistName = artistName;
+        this.songName = songName;
+        this.duration = duration;
+        this.pathSong = pathSong;
+        this.pathImage = pathImage;
     }
 
-    public String getTitle() {
-        return title;
+    public String getArtistName() {
+        return artistName;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setArtistName(String artistName) {
+        this.artistName = artistName;
     }
 
-    public String getArtist() {
-        return artist;
+    public String getSongName() {
+        return songName;
     }
 
-    public void setArtist(String artist) {
-        this.artist = artist;
+    public void setSongName(String songName) {
+        this.songName = songName;
     }
 
-    public String getAlbum() {
-        return album;
+    public double getDuration() {
+        return duration;
     }
 
-    public void setAlbum(String album) {
-        this.album = album;
+    public void setDuration(double duration) {
+        this.duration = duration;
     }
 
-    public String getGenre() {
-        return Genre;
+    public String getPathSong() {
+        return pathSong;
     }
 
-    public void setGenre(String genre) {
-        Genre = genre;
+    public void setPathSong(String pathSong) {
+        this.pathSong = pathSong;
     }
 
-    public String getImgName() {
-        return imgName;
+    public String getPathImage() {
+        return pathImage;
     }
 
-    public void setImgName(String imgName) {
-        this.imgName = imgName;
+    public void setPathImage(String pathImage) {
+        this.pathImage = pathImage;
     }
 
-    public double getSongLength() {
-        return songLength;
-    }
-
-    public void setSongLength(double songLength) {
-        this.songLength = songLength;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
+    @Override
+    public String toString() {
+        return artistName + " - " + songName;
     }
 }

@@ -1,5 +1,6 @@
 package hi.verkefni.mediaplayer.vidmot;
 
+import hi.verkefni.mediaplayer.vinnsla.Genres;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,9 +28,15 @@ public class ExploreController implements Initializable {
             if (fxGridPaneGenre.getChildren().get(i) instanceof VBox) {
                 VBox vbox = (VBox) fxGridPaneGenre.getChildren().get(i);
                 for (int j = 0; j < vbox.getChildren().size(); j++) {
-                    if (vbox.getChildren().get(j) instanceof Button) {
-                        Button button = (Button) vbox.getChildren().get(j);
-                        button.setOnAction(this::handleButtonClick);
+                    if (vbox.getChildren().get(j) instanceof Button button) {
+                        button.setOnAction(event -> {
+                                try {
+                                    handleButtonClick(event);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            });
+
                     }
                 }
             }
@@ -37,22 +44,27 @@ public class ExploreController implements Initializable {
     }
 
     @FXML
-    public void handleButtonClick(ActionEvent e) {
+    public void handleButtonClick(ActionEvent e) throws IOException {
+        Genres genre = new Genres();
         try {
             Button button = (Button) e.getSource();
             String buttonId = button.getId();
 
             switch (buttonId) {
-                case "Religious":
+                case "classical":
+                    genre.setGenreIndex(0);
+                    loadView("genre-view.fxml");
+                    break;
+                case "hiphop":
+                    genre.setGenreIndex(1);
                     loadView("genre-view.fxml");
                     break;
                 case "pop":
+                    genre.setGenreIndex(2);
                     loadView("genre-view.fxml");
                     break;
-                case "Icelandic":
-                    loadView("genre-view.fxml");
-                    break;
-                case "Rock":
+                case "rock":
+                    genre.setGenreIndex(3);
                     loadView("genre-view.fxml");
                     break;
                 default:
@@ -68,7 +80,6 @@ public class ExploreController implements Initializable {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(view));
             AnchorPane genreView = fxmlLoader.load();
-
             Parent parent = fxMainPane.getParent();
 
             if (parent instanceof BorderPane) {

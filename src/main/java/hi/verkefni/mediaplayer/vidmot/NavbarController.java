@@ -11,6 +11,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -22,39 +23,39 @@ public class NavbarController {
     @FXML
     private Button fxMore;
     @FXML
-    private Button fxSignIn;
-    @FXML
     public Label userName;
     @FXML
     public ImageView userImage;
+
+    private static final String SIGN_IN_FXML = "SignIn.fxml";
 
 
     @FXML
     private void initialize() {
         loadContent("explore.fxml");
+        configureMorePaneAnimation();
+    }
+
+    private void configureMorePaneAnimation() {
         fxMorePane.setTranslateX(135);
         fxMorePane.setPrefWidth(135);
         fxMore.setOnMouseClicked(event -> {
             TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(javafx.util.Duration.seconds(0.6));
+            slide.setDuration(Duration.seconds(0.6));
             slide.setNode(fxMorePane);
-
-            if (fxMorePane.getTranslateX() == 135) {
-                slide.setToX(0);
-            } else {
-                slide.setToX(135);
-
-            }
+            slide.setToX(fxMorePane.getTranslateX() == 135 ? 0 : 135);
             slide.play();
         });
-
     }
     @FXML
     public void onLogin(ActionEvent e) {
-        loadContent("SignIn.fxml");
+        loadContent(SIGN_IN_FXML);
     }
 
-    void loadContent(String fxmlFileName) {
+    public void loadContent(String fxmlFileName) {
+        if (userName.getText().isEmpty() && !fxmlFileName.equals(SIGN_IN_FXML)) {
+            fxmlFileName = SIGN_IN_FXML;
+        }
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName));
             loader.setControllerFactory(c -> {
@@ -77,7 +78,7 @@ public class NavbarController {
         }
     }
 
-    void loadContent() {
+    public void loadContent() {
         loadContent("signin.fxml");
     }
 
@@ -92,6 +93,7 @@ public class NavbarController {
     @FXML
     public void onExplore(ActionEvent actionEvent) {
         loadContent("explore.fxml");
+
     }
     @FXML
     public void onListenAndWatch(ActionEvent actionEvent) {
@@ -107,6 +109,4 @@ public class NavbarController {
     public void onPlaylists(ActionEvent actionEvent) {
         loadContent("playlists.fxml");
     }
-
-
 }
