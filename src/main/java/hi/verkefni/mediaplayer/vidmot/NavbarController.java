@@ -1,3 +1,4 @@
+
 package hi.verkefni.mediaplayer.vidmot;
 
 import javafx.animation.TranslateTransition;
@@ -92,22 +93,6 @@ public class NavbarController {
     public void onExplore(ActionEvent actionEvent) {
         loadContent("explore.fxml");
     }
-
-    @FXML
-    public void onArtist(ActionEvent actionEvent) {
-        loadContent("artist.fxml");
-    }
-
-    @FXML
-    public void onAlbums(ActionEvent actionEvent) {
-        loadContent("albums.fxml");
-    }
-
-    @FXML
-    public void onSongs(ActionEvent actionEvent) {
-        loadContent("songs.fxml");
-    }
-
     @FXML
     public void onListenAndWatch(ActionEvent actionEvent) {
         loadContent("listenandwatch.fxml");
@@ -123,9 +108,5 @@ public class NavbarController {
         loadContent("playlists.fxml");
     }
 
-    @FXML
-    public void onChat(ActionEvent actionEvent) {
-        loadContent("chat.fxml");
-    }
 
 }

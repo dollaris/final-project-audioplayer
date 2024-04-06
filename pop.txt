@@ -1,0 +1,3 @@
+TaylorSwift Exile 286000 audio/taylor.mp3 img/taylor.jpeg
+TheWeeknd SaveYourTears 249000 audio/theweeknd.mp3 img/theweeknd.jpeg
+BensonBoone BeautifulThings 193000 audio/benson.mp3 img/benson.jpeg

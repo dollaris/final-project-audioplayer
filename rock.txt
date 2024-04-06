@@ -1,0 +1,3 @@
+Scorpions WindOfChange 283000 audio/scorpions.mp3 img/scorpions
+Queen WeWillRockYou 135000 audio/queen.mp3 img/queen.jpeg
+BonJovi ItsMyLife 267000 audio/bonjovi.mp3 img/bonjovi.jpeg
