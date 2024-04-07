@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -75,22 +74,10 @@
             <ImageView fx:id="userImage" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" />
             <Label fx:id="userName" layoutX="56.0" layoutY="12.0" prefHeight="16.0" prefWidth="112.0" styleClass="sidebtn" text="" textFill="aliceblue" />
             <JFXButton fx:id="fxSignIn" layoutX="188.0" layoutY="8.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onLogin" styleClass="btn-signin" text="Sign in" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="8.0" />
-            <JFXButton fx:id="fxMore" contentDisplay="RIGHT" layoutX="667.0" layoutY="8.0" styleClass="sidebtn" text="Lyrics/More" AnchorPane.rightAnchor="0.0">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@icon/interface.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
          </children>
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
       </AnchorPane>
    </top>
-   <right>
-      <ScrollPane fx:id="fxMorePane" disable="true" hbarPolicy="NEVER" opacity="0.8" styleClass="scrollPane" BorderPane.alignment="CENTER" />
-   </right>
 </BorderPane>

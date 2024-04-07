@@ -7,13 +7,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-
+import java.util.Optional;
 
 
 public class ExploreController implements Initializable {
@@ -40,6 +42,30 @@ public class ExploreController implements Initializable {
                     }
                 }
             }
+        }
+    }
+
+    @FXML
+    public void showAddPlaylistDialog(ActionEvent e) {
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initOwner(fxMainPane.getScene().getWindow());
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("addplaylistdialog.fxml"));
+        try {
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+        } catch (IOException exception) {
+            System.out.println("Couldn't load the dialog");
+            exception.printStackTrace();
+            return;
+        }
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+
+        Optional<ButtonType> result = dialog.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            System.out.println("OK pressed");
+        } else {
+            System.out.println("Cancel pressed");
         }
     }
 

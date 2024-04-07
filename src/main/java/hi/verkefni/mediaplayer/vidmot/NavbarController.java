@@ -1,7 +1,6 @@
 
 package hi.verkefni.mediaplayer.vidmot;
 
-import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +10,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -33,20 +31,8 @@ public class NavbarController {
     @FXML
     private void initialize() {
         loadContent("explore.fxml");
-        configureMorePaneAnimation();
     }
 
-    private void configureMorePaneAnimation() {
-        fxMorePane.setTranslateX(135);
-        fxMorePane.setPrefWidth(135);
-        fxMore.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.6));
-            slide.setNode(fxMorePane);
-            slide.setToX(fxMorePane.getTranslateX() == 135 ? 0 : 135);
-            slide.play();
-        });
-    }
     @FXML
     public void onLogin(ActionEvent e) {
         loadContent(SIGN_IN_FXML);

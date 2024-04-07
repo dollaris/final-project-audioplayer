@@ -14,10 +14,16 @@ public class Genre {
     private ObservableList<Song> genre;
     private int index = 0;
     private String genreFile;
+    private String genreName;
 
     public Genre(String genreFile) throws IOException {
         this.genreFile = genreFile;
+        this.genreName = extractGenreName();
         readSong();
+    }
+
+    public String extractGenreName() {
+        return genreFile.substring(0, genreFile.lastIndexOf("."));
     }
 
     public void readSong() throws IOException  {
@@ -36,6 +42,10 @@ public class Genre {
             genre.add(song);
         }
         br.close();
+    }
+
+    public String getGenreName() {
+        return genreName;
     }
 
     public void next() {
