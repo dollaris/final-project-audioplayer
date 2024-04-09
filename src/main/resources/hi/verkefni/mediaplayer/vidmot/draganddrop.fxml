@@ -7,14 +7,23 @@
 <?import javafx.scene.media.*?>
 
 <AnchorPane stylesheets="@../../../../css/styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.mediaplayer.vinnsla.DragAndDrop">
+
+    <!-- userData -->
     <AnchorPane prefHeight="80.0" prefWidth="550.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="350.0" AnchorPane.topAnchor="0.0">
-        <children>
-            <Label fx:id="appName" alignment="CENTER" prefHeight="80.0" prefWidth="550.0" text="MediaPlayer" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-        </children>
+      <children>
+           <HBox alignment="CENTER" prefHeight="71.0" prefWidth="570.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                   <ImageView fx:id="userImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" />
+                   <Label fx:id="userNameLabel" prefHeight="60.0" prefWidth="440.0" styleClass="sidebtn" textFill="aliceblue" />
+               </children>
+           </HBox>
+      </children>
     </AnchorPane>
+    <!-- /userData -->
 
 
-    <AnchorPane fx:id="dropHere" layoutX="10.4" layoutY="82.0" prefHeight="360.0" prefWidth="525.0" style="-fx-background-image: url(img/drophere.jpg);" AnchorPane.bottomAnchor="158.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="365.0" AnchorPane.topAnchor="82.0">
+    <!-- Drag and Drop Area -->
+    <AnchorPane fx:id="dropHere" layoutX="10.4" layoutY="82.0" onDragDropped="#paneDragDropped" onDragOver="#paneDragOver" prefHeight="360.0" prefWidth="525.0" AnchorPane.bottomAnchor="158.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="365.0" AnchorPane.topAnchor="82.0">
         <children>
 
             <StackPane fx:id="paneDragAndDrop" onDragDropped="#paneDragDropped" onDragOver="#paneDragOver" prefHeight="360.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -26,21 +35,24 @@
                         <image>
                             <Image url="@img/drophere.png" />
                         </image>
+                  <rotationAxis>
+                     <Point3D z="-10.0" />
+                  </rotationAxis>
                     </ImageView>
                 </children>
             </StackPane>
 
         </children>
     </AnchorPane>
+    <!-- /Drag and Drop Area -->
 
 
+    <!-- ListView Meta- and playlist -->
     <AnchorPane layoutX="400.0" prefHeight="80.0" prefWidth="200.0" AnchorPane.rightAnchor="0.0">
         <children>
             <Label fx:id="metadata" alignment="CENTER" prefHeight="80.0" prefWidth="350.0" text="Info (Metadata)" textAlignment="CENTER" AnchorPane.rightAnchor="0.0" />
         </children>
     </AnchorPane>
-
-
     <AnchorPane layoutX="400.0" layoutY="82.0" prefHeight="150.0" prefWidth="201.0" AnchorPane.rightAnchor="0.0">
         <children>
             <ListView fx:id="metadataListView" prefHeight="150.0" prefWidth="350.0" AnchorPane.rightAnchor="6.0">
@@ -62,6 +74,8 @@
             <Label fx:id="playlist" alignment="CENTER" layoutX="8.0" layoutY="1.0" prefHeight="51.0" prefWidth="350.0" text="Label" AnchorPane.rightAnchor="-1.0" />
         </children>
     </AnchorPane>
+    <!-- /ListView Meta- and playlist -->
+
 
     <!-- Controlles -->
     <AnchorPane prefHeight="150.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="375.0">
@@ -110,5 +124,7 @@
             <ProgressBar fx:id="progressBar" layoutX="15.0" layoutY="14.0" prefHeight="24.0" prefWidth="494.0" progress="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="16.0" />
         </children>
     </AnchorPane>
+    <!-- /Controlles -->
+
 
 </AnchorPane>

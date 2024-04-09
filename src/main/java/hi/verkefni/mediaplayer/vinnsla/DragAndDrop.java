@@ -3,6 +3,7 @@ package hi.verkefni.mediaplayer.vinnsla;
 import javafx.collections.MapChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
@@ -22,7 +23,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class DragAndDrop implements Controll {
+public class DragAndDrop {
 
     @FXML
     private MediaView mediaView;
@@ -36,7 +37,11 @@ public class DragAndDrop implements Controll {
     @FXML
     private ImageView imageView;
 
-    private final Queue<File> fileQueue = new LinkedList<>();
+    @FXML
+    private ImageView userImageView;
+
+    @FXML
+    private Label userNameLabel;
 
     @FXML
     private Slider volumeSlider;
@@ -44,12 +49,17 @@ public class DragAndDrop implements Controll {
     @FXML
     private ProgressBar progressBar;
 
+    private final Queue<File> fileQueue = new LinkedList<>();
+
+    private final List<File> fileList = new LinkedList<>();
+    private int currentIndex = -1; // Start before the first element
+
+
     private MediaPlayer mediaPlayer;
 
     @FXML
     void initialize() {
         setProgressBarHandlers();
-        volumeSlider.setValue(100);
     }
 
     private void setProgressBarHandlers() {
@@ -64,83 +74,65 @@ public class DragAndDrop implements Controll {
 
         if (mediaPlayer != null) {
             mediaPlayer.currentTimeProperty().addListener((observable, oldValue, newValue) -> {
-                Duration currentTime = mediaPlayer.getCurrentTime();
-                Duration totalDuration = mediaPlayer.getTotalDuration();
-                double progress = newValue.toSeconds() / totalDuration.toSeconds();
+                double progress = newValue.toSeconds() / mediaPlayer.getTotalDuration().toSeconds();
                 progressBar.setProgress(progress);
             });
         }
     }
 
-
-    @FXML
-    void paneDragDropped(DragEvent event) {
+     public void paneDragDropped(DragEvent event) {
         Dragboard dragboard = event.getDragboard();
         boolean success = false;
         if (dragboard.hasFiles()) {
             List<File> files = dragboard.getFiles();
             for (File file : files) {
                 playlistListView.getItems().add(file.getName());
-                if (!fileQueue.contains(file)) {
-                    fileQueue.add(file);
+                if (!fileList.contains(file)) {
+                    fileList.add(file);
                 }
             }
             success = true;
             event.setDropCompleted(success);
             event.consume();
 
-            if (
-                    (
-                            mediaPlayer == null ||
-                                    mediaPlayer.getStatus() == MediaPlayer.Status.STOPPED
-                    ) &&
-                            !fileQueue.isEmpty()
-            ) {
+            // Auto-play the first file if nothing is currently playing
+            if ((mediaPlayer == null || mediaPlayer.getStatus() == MediaPlayer.Status.STOPPED) && !fileList.isEmpty() && currentIndex == -1) {
                 playNextInQueue();
             }
         }
     }
 
+
     private void playNextInQueue() {
-        if (!fileQueue.isEmpty()) {
-            File nextFile = fileQueue.poll();
-            if (!playlistListView.getItems().contains(nextFile.getName())) {
-                playlistListView.getItems().add(nextFile.getName());
-            }
+        if (currentIndex + 1 < fileList.size()) {
+            currentIndex++;
+            File nextFile = fileList.get(currentIndex);
             displayFile(nextFile);
         }
     }
 
+    private void playPreviousInQueue() {
+        if (currentIndex - 1 >= 0) {
+            currentIndex--;
+            mediaPlayer.stop();
+            File previousFile = fileList.get(currentIndex);
+            displayFile(previousFile);
+        } else {
+            System.out.println("No previous tracks are in the queue.");
+        }
+    }
+
+
     private void displayFile(File file) {
         String fileName = file.getName().toLowerCase();
-        if (
-                fileName.endsWith(".mp3") ||
-                        fileName.endsWith(".wav") ||
-                        fileName.endsWith(".aiff") ||
-                        fileName.endsWith(".aac") ||
-                        fileName.endsWith(".flac") ||
-                        fileName.endsWith(".ogg")
-        ) {
+        if (fileName.matches(".+\\.(mp3|wav|aiff|aac|flac|ogg)$")) {
             playAudio(file);
             if (!playlistListView.getItems().contains(file.getName())) {
                 playlistListView.getItems().add(file.getName());
             }
-        } else if (
-                fileName.endsWith(".jpg") ||
-                        fileName.endsWith(".jpeg") ||
-                        fileName.endsWith(".png") ||
-                        fileName.endsWith(".gif") ||
-                        fileName.endsWith(".bmp")
-        ) {
+        } else if (fileName.matches(".+\\.(jpg|jpeg|png|gif|bmp)$")) {
             displayImage(file);
-        } else if (
-                fileName.endsWith(".avi") ||
-                        fileName.endsWith(".mp4") ||
-                        fileName.endsWith(".flv") ||
-                        fileName.endsWith(".mov") ||
-                        fileName.endsWith(".wmv") ||
-                        fileName.endsWith(".webm")
-        ) {
+        } else if (fileName.matches(".+\\.(avi|mp4|flv|mov|wmv|webm)$")) {
             playVideo(file);
             if (!playlistListView.getItems().contains(file.getName())) {
                 playlistListView.getItems().add(file.getName());
@@ -158,7 +150,6 @@ public class DragAndDrop implements Controll {
         });
 
         mediaPlayer.setOnReady(() -> {
-            Duration totalDuration = mediaPlayer.getTotalDuration();
             progressBar.setProgress(0);
             progressBar.setProgress(1);
         });
@@ -173,29 +164,15 @@ public class DragAndDrop implements Controll {
             }
         });
 
-        mediaPlayer.setOnError(() -> {
-            System.out.println("Error occurred: " + mediaPlayer.getError().getMessage());
-        });
+        mediaPlayer.setOnError(() -> System.out.println("Error occurred: " + mediaPlayer.getError().getMessage()));
 
         media.getMetadata().addListener((MapChangeListener.Change<? extends String, ? extends Object> change) -> {
             if (change.wasAdded()) {
-                String key = change.getKey();
-                Object value = change.getValueAdded();
-                System.out.println("Metadata - Key: " + key + ", Value: " + value);
-
-                if (key.equals("artist") || key.equals("album") || key.equals("title") || key.equals("genre") || key.equals("year")) {
-                    metadataListView.getItems().add(key + ": " + value);
-                    System.out.println("Added audio properties to the ListView" + metadataListView.getItems());
-                }
-
-                if (key.equals("image")) {
-                    Image image = (Image) value;
-                    imageView.setImage(image);
-                }
+                handleMetadataChange(change.getKey(), change.getValueAdded());
             }
         });
 
-        mediaView.setMediaPlayer(mediaPlayer);
+        setMediaView(media);
         System.out.println("Playing audio: " + file);
     }
 
@@ -209,7 +186,6 @@ public class DragAndDrop implements Controll {
         });
 
         mediaPlayer.setOnReady(() -> {
-            Duration totalDuration = mediaPlayer.getTotalDuration();
             progressBar.setProgress(0);
             progressBar.setProgress(1);
         });
@@ -224,38 +200,20 @@ public class DragAndDrop implements Controll {
             }
         });
 
-        mediaPlayer.setOnError(() -> {
-            System.out.println("Error occurred: " + mediaPlayer.getError().getMessage());
-        });
+        mediaPlayer.setOnError(() -> System.out.println("Error occurred: " + mediaPlayer.getError().getMessage()));
 
         media.getMetadata().addListener((MapChangeListener.Change<? extends String, ? extends Object> change) -> {
             if (change.wasAdded()) {
-                String key = change.getKey();
-                Object value = change.getValueAdded();
-                System.out.println("Video Metadata - Key: " + key + ", Value: " + value);
-
-                if (key.equals("artist") || key.equals("album") || key.equals("title") || key.equals("genre") || key.equals("year")) {
-                    metadataListView.getItems().add(key + ": " + value);
-                }
-
-                if (key.equals("image")) {
-                    Image image = (Image) value;
-                    imageView.setImage(image);
-                }
+                handleMetadataChange(change.getKey(), change.getValueAdded());
             }
         });
 
-        mediaView.setMediaPlayer(mediaPlayer);
+        setMediaView(media);
         imageView.setVisible(false);
         mediaView.setVisible(true);
         System.out.println("Playing video: " + file);
     }
 
-    /**
-     * Displays an image in the imageView and updates the metadataListView with the image's properties.
-     *
-     * @param  file  the File object representing the image file to be displayed
-     */
     private void displayImage(File file) {
         Image image = new Image(file.toURI().toString());
         imageView.setImage(image);
@@ -264,28 +222,31 @@ public class DragAndDrop implements Controll {
         System.out.println("Displaying image: " + file);
 
         metadataListView.getItems().clear();
-
-        metadataListView.getItems().add("Height: " + image.getHeight());
-        metadataListView.getItems().add("Width: " + image.getWidth());
-        metadataListView
-                .getItems()
-                .add("Pixel Reader Available: " + (image.getPixelReader() != null));
-        System.out.println(
-                "Added image properties to the ListView" + metadataListView.getItems()
-        );
-
-        System.out.println("Height: " + image.getHeight());
-        System.out.println("Width: " + image.getWidth());
-        System.out.println(
+        metadataListView.getItems().addAll(
+                "Height: " + image.getHeight(),
+                "Width: " + image.getWidth(),
                 "Pixel Reader Available: " + (image.getPixelReader() != null)
         );
+        System.out.println("Added image properties to the ListView" + metadataListView.getItems());
     }
 
-    /**
-     * Handles the drag over event for the pane.
-     *
-     * @param  event  the DragEvent object representing the drag over event
-     */
+    private void handleMetadataChange(String key, Object value) {
+        System.out.println("Metadata - Key: " + key + ", Value: " + value);
+        if (key.equals("artist") || key.equals("album") || key.equals("title") || key.equals("genre") || key.equals("year")) {
+            metadataListView.getItems().add(key + ": " + value);
+            System.out.println("Added audio properties to the ListView" + metadataListView.getItems());
+        }
+
+        if (key.equals("image")) {
+            Image image = (Image) value;
+            imageView.setImage(image);
+        }
+    }
+
+    private void setMediaView(Media media) {
+        mediaView.setMediaPlayer(mediaPlayer);
+    }
+
     @FXML
     void paneDragOver(DragEvent event) {
         Dragboard dragboard = event.getDragboard();
@@ -295,13 +256,6 @@ public class DragAndDrop implements Controll {
         event.consume();
     }
 
-    /**
-     * Perform play/pause action on media player.
-     *
-     * @param  actionEvent    the action event triggering the function
-     * @return         	    void
-     */
-    @Override
     @FXML
     public void onPlayPause(ActionEvent actionEvent) {
         if (mediaPlayer != null) {
@@ -313,12 +267,6 @@ public class DragAndDrop implements Controll {
         }
     }
 
-    /**
-     * Stops the media player if it is currently playing.
-     *
-     * @param  actionEvent  the event that triggered the method
-     */
-    @Override
     @FXML
     public void onStop(ActionEvent actionEvent) {
         if (mediaPlayer != null) {
@@ -326,18 +274,10 @@ public class DragAndDrop implements Controll {
         }
     }
 
-    /**
-     * Handles the mouse click event on the track list.
-     *
-     * @param  mouseEvent  the mouse event that triggered the function
-     */
-    @Override
     @FXML
     public void onTrackList(MouseEvent mouseEvent) {
         if (mouseEvent.getClickCount() == 2) {
-            String selectedItem = playlistListView
-                    .getSelectionModel()
-                    .getSelectedItem();
+            String selectedItem = playlistListView.getSelectionModel().getSelectedItem();
             if (selectedItem != null) {
                 File file = new File(selectedItem);
                 if (file.exists()) {
@@ -349,35 +289,23 @@ public class DragAndDrop implements Controll {
         }
     }
 
-    /**
-     * Handles the action event when the previous track button is clicked.
-     *
-     * @param  actionEvent  the action event triggered by the button click
-     */
-    @Override
+    @FXML
     public void onPreviousTrack(ActionEvent actionEvent) {
-        File file = fileQueue.peek();
-        if (file != null) {
-            mediaPlayer.stop();
-            displayFile(file);
-        } else {
-            System.out.println("No previous tracks is in the queue.");
-        }
+        playPreviousInQueue();
     }
 
-    /**
-     * A description of the entire Java function.
-     *
-     * @param  actionEvent    description of parameter
-     * @return          description of return value
-     */
-    @Override
+    @FXML
     public void onNextTrack(ActionEvent actionEvent) {
-        if (!fileQueue.isEmpty()) {
+        if (currentIndex + 1 < fileList.size()) {
             mediaPlayer.stop();
             playNextInQueue();
         } else {
             System.out.println("No more tracks in the queue.");
         }
+    }
+
+    public void updateUserInfo(String userName) {
+        userNameLabel.setText(userName);
+        userImageView.setImage(new Image("https://robohash.org/" + userName + ".png"));
     }
 }
