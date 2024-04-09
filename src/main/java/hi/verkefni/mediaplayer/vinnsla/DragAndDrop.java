@@ -233,6 +233,7 @@ public class DragAndDrop {
     private void handleMetadataChange(String key, Object value) {
         System.out.println("Metadata - Key: " + key + ", Value: " + value);
         if (key.equals("artist") || key.equals("album") || key.equals("title") || key.equals("genre") || key.equals("year")) {
+            metadataListView.getItems().clear();
             metadataListView.getItems().add(key + ": " + value);
             System.out.println("Added audio properties to the ListView" + metadataListView.getItems());
         }
