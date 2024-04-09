@@ -4,42 +4,26 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
-
 public class SignIn {
 
     @FXML
     private TextField nameInput;
 
-    private NavbarController navbarController;
+    private MediaApplication mainApp;
+
+    public void setMainApp(MediaApplication mainApp) {
+        this.mainApp = mainApp;
+    }
 
     @FXML
-    public void initialize() {
-        nameInput.setText("");
-    }
-
-    public void setNavbarController(NavbarController navbarController) {
-        this.navbarController = navbarController;
-    }
-
-    public void onLogin(ActionEvent actionEvent) throws IOException {
-        String name = nameInput.getText();
-        if (name.isEmpty()) {
-            nameInput.setStyle("-fx-border-color: red");
-            System.out.println("Please enter a name.");
-            return;
-        }
-
-        nameInput.setStyle("-fx-border-color: green");
-
-        if (navbarController != null) {
-            navbarController.updateUserInfo(name);
+    private void onLogin(ActionEvent event) {
+        String name = nameInput.getText().trim();
+        if (!name.isEmpty()) {
+            mainApp.loadDragAndDropScene(name);
         } else {
-            System.out.println("Error: NavbarController is null.");
+            // Handle empty name case
+            nameInput.setStyle("-fx-border-color: red;");
         }
-
-        System.out.println("Logged in as: " + name);
-        navbarController.loadContent("explore.fxml");
     }
 
     public void onQuit(ActionEvent actionEvent) {
