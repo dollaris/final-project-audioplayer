@@ -3,8 +3,10 @@ Welcome to JavaFX MediaPlayer! This application allows users to sign in, listen 
 
 ## Features
 -**User Authentication:** Users can sign in by entering their name.
+
 -**Profile Picture:** A cartoon image is generated randomly as the user's profile picture upon signing in.
 -**Media Playback:** Users can listen to music and watch videos.
+
 -**Drag and Drop:** Media files can be easily added to the application by dragging and dropping them.
 
 ## Requirements:
