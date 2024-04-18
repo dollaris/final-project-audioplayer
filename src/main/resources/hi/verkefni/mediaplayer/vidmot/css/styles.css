@@ -2,13 +2,9 @@
     -fx-background-color: #222831;
     -fx-font-family: "Arial Rounded MT Bold";
     -fx-text-fill: #FFFFFF;
-
 }
 
-
-
 #dropHere {
-    -fx-background: url("../img/drophere.jpg");
     -fx-border-color: #69DDFF;
     -fx-border-style: dashed;
     -fx-border-width: 2px;
@@ -17,7 +13,6 @@
 .label {
     -fx-text-fill: #F3F8FF;
     -fx-font-size: 13px;
-
 }
 
 .progress-bar {
@@ -55,7 +50,7 @@
 }
 
 .list-view .cell {
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: #000000;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-font-family: "Arial";
@@ -101,9 +96,13 @@
 }
 #btn {
     -fx-background-color: #69DDFF;
-    -fx-text-fill: #f1f1f1;
+    -fx-text-fill: #000000;
     -fx-background-radius: 20;
     -fx-padding: 10 14;
+}
+
+#btn:hover {
+    -fx-background-color: #008db6;
 }
 
 #userName{
