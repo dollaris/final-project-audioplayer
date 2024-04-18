@@ -1,4 +1,5 @@
 module hi.verkefni.mediaplayer {
+
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.media;

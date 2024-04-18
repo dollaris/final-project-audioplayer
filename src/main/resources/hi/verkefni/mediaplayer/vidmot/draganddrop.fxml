@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.media.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.media.MediaView?>
 
-<AnchorPane stylesheets="@../../../../css/styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.mediaplayer.vinnsla.DragAndDrop">
+<AnchorPane minWidth="700.0" prefHeight="568.0" prefWidth="702.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.mediaplayer.vinnsla.DragAndDrop">
 
     <!-- userData -->
-    <AnchorPane prefHeight="80.0" prefWidth="550.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="350.0" AnchorPane.topAnchor="0.0">
+    <AnchorPane prefHeight="80.0" prefWidth="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="305.0" AnchorPane.topAnchor="0.0">
       <children>
-           <HBox alignment="CENTER" prefHeight="71.0" prefWidth="570.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+           <HBox alignment="CENTER" prefHeight="80.0" prefWidth="400.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                    <ImageView fx:id="userImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" />
-                   <Label fx:id="userNameLabel" prefHeight="60.0" prefWidth="440.0" styleClass="sidebtn" textFill="aliceblue" />
+                   <Label fx:id="userNameLabel" prefHeight="80.0" prefWidth="450.0" styleClass="sidebtn" textFill="aliceblue" />
                </children>
            </HBox>
       </children>
@@ -23,21 +31,18 @@
 
 
     <!-- Drag and Drop Area -->
-    <AnchorPane fx:id="dropHere" layoutX="10.4" layoutY="82.0" onDragDropped="#paneDragDropped" onDragOver="#paneDragOver" prefHeight="360.0" prefWidth="525.0" AnchorPane.bottomAnchor="158.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="365.0" AnchorPane.topAnchor="82.0">
+    <AnchorPane fx:id="dropHere" layoutX="10.4" layoutY="83.2" minHeight="150.0" minWidth="327.0" onDragDropped="#paneDragDropped" onDragOver="#paneDragOver" prefHeight="330.0" prefWidth="370.0" AnchorPane.bottomAnchor="158.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="322.0" AnchorPane.topAnchor="83.0">
         <children>
 
-            <StackPane fx:id="paneDragAndDrop" onDragDropped="#paneDragDropped" onDragOver="#paneDragOver" prefHeight="360.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <StackPane fx:id="paneDragAndDrop" layoutX="9.6" layoutY="7.199999999999999" onDragDropped="#paneDragDropped" onDragOver="#paneDragOver" prefHeight="330.0" prefWidth="370.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="5.0">
                 <children>
                     <!-- MediaView for displaying videos -->
                     <MediaView fx:id="mediaView" fitHeight="${paneDragAndDrop.height}" fitWidth="${paneDragAndDrop.width}" StackPane.alignment="CENTER" />
                     <!-- ImageView for displaying images -->
-                    <ImageView fx:id="imageView" fitHeight="${paneDragAndDrop.height}" fitWidth="${paneDragAndDrop.width}" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
+                    <ImageView fx:id="imageView" fitHeight="${paneDragAndDrop.height}" fitWidth="${paneDragAndDrop.width}" preserveRatio="true" StackPane.alignment="CENTER">
                         <image>
                             <Image url="@img/drophere.png" />
                         </image>
-                  <rotationAxis>
-                     <Point3D z="-10.0" />
-                  </rotationAxis>
                     </ImageView>
                 </children>
             </StackPane>
@@ -48,39 +53,38 @@
 
 
     <!-- ListView Meta- and playlist -->
-    <AnchorPane layoutX="400.0" prefHeight="80.0" prefWidth="200.0" AnchorPane.rightAnchor="0.0">
+    <AnchorPane layoutX="400.0" prefHeight="80.0" prefWidth="300.0" AnchorPane.rightAnchor="0.0">
         <children>
-            <Label fx:id="metadata" alignment="CENTER" prefHeight="80.0" prefWidth="350.0" text="Info (Metadata)" textAlignment="CENTER" AnchorPane.rightAnchor="0.0" />
+            <Label fx:id="metadata" alignment="CENTER" prefHeight="80.0" prefWidth="300.0" text="Info (Metadata)" textAlignment="CENTER" AnchorPane.rightAnchor="0.0" />
         </children>
     </AnchorPane>
-    <AnchorPane layoutX="400.0" layoutY="82.0" prefHeight="150.0" prefWidth="201.0" AnchorPane.rightAnchor="0.0">
+    <AnchorPane layoutX="400.0" layoutY="82.0" prefHeight="150.0" prefWidth="300.0" AnchorPane.rightAnchor="0.0">
         <children>
-            <ListView fx:id="metadataListView" prefHeight="150.0" prefWidth="350.0" AnchorPane.rightAnchor="6.0">
+            <ListView fx:id="metadataListView" prefHeight="150.0" prefWidth="300.0" AnchorPane.rightAnchor="6.0">
                 <padding>
                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                 </padding>
             </ListView>
         </children>
     </AnchorPane>
-    <VBox layoutY="280.0" prefHeight="133.0" prefWidth="599.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="201.0" />
 
-    <AnchorPane layoutX="400.0" layoutY="232.0" prefHeight="360.0" prefWidth="350.0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="232.0">
+    <AnchorPane layoutX="400.0" layoutY="232.0" prefHeight="360.0" prefWidth="300.0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="232.0">
         <children>
-            <ListView fx:id="playlistListView" layoutY="49.0" onMouseClicked="#onTrackList" prefHeight="288.0" prefWidth="350.0" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
+            <ListView fx:id="playlistListView" layoutY="49.0" onMouseClicked="#onTrackList" prefHeight="288.0" prefWidth="300.0" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
                 <padding>
                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                 </padding>
             </ListView>
-            <Label fx:id="playlist" alignment="CENTER" layoutX="8.0" layoutY="1.0" prefHeight="51.0" prefWidth="350.0" text="Label" AnchorPane.rightAnchor="-1.0" />
+            <Label fx:id="playlist" alignment="CENTER" layoutX="8.0" layoutY="1.0" prefHeight="51.0" prefWidth="300.0" text="Label" AnchorPane.rightAnchor="-1.0" />
         </children>
     </AnchorPane>
     <!-- /ListView Meta- and playlist -->
 
-
-    <!-- Controlles -->
-    <AnchorPane prefHeight="150.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="375.0">
+                        
+                            <!-- Controlles -->
+    <AnchorPane layoutX="9.6" layoutY="417.0" prefHeight="150.0" prefWidth="369.0" AnchorPane.bottomAnchor="0.6000000000000227" AnchorPane.leftAnchor="9.6" AnchorPane.rightAnchor="323.2">
         <children>
-            <TilePane alignment="CENTER" hgap="1.0" prefHeight="115.0" prefWidth="524.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0">
+            <TilePane alignment="CENTER" hgap="1.0" minHeight="115.0" minWidth="327.0" prefHeight="115.0" prefWidth="327.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                 <children>
                     <Slider fx:id="volumeSlider" orientation="VERTICAL" prefHeight="64.0" prefWidth="14.0" />
                     <Button id="btn" fx:id="previous" mnemonicParsing="false" onAction="#onPreviousTrack" prefHeight="30.0" prefWidth="30.0">
